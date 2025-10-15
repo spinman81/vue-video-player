@@ -11,18 +11,25 @@ const props = defineProps({
 
 let player = null;
 onMounted(() => {
-  player = videojs("videoPlayer", props.options, () => {
+    player = videojs("videoPlayer", props.options, () => {
     console.log("[VideoPlayer] ready!");
   });
+  console.log("player:", player);
 });
 
 onBeforeUnmount(() => {
   player.dispose();
 });
+
+function onClick(e) {
+  console.log("player:", player);
+};
 </script> 
 
 <template>
   <div>
     <video id="videoPlayer" class="video-js"></video>
+    <!-- <br></br>
+    <button @click="onClick">Click</button> -->
   </div>
 </template>
